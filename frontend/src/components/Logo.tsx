@@ -11,9 +11,9 @@ export function LogoMark({ className = 'logo-mark' }: { className?: string }) {
 
 export function Logo({ href = '/' }: { href?: string }) {
   return (
-    <Link className="logo" href={href} aria-label="CraftFlow Referrals home">
+    <Link className="logo" href={href} aria-label="Referral home">
       <LogoMark />
-      <span className="logo-text"><b className="wordmark"><span className="craft">Craft</span><span className="flow">flow</span></b><small className="logo-sub">Referrals</small></span>
+      <span className="logo-text"><b className="wordmark"><span className="craft">Refer</span><span className="flow">ral</span></b></span>
     </Link>
   );
 }
