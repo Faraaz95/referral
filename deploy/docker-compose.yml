@@ -1,0 +1,61 @@
+# CraftFlow Referrals production stack — fully separate from the other apps on the VPS (own project
+# name, network, volumes and container names). Nginx Proxy Manager reaches the web container over
+# the "referral" network; nothing is published on the host.
+name: referral
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: referral-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: referral
+      POSTGRES_USER: referral
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set in deploy/.env}
+    volumes:
+      - referral_pgdata:/var/lib/postgresql/data
+    networks: [referral]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U referral -d referral"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    mem_limit: 256m
+    cpus: 0.5
+
+  backend:
+    image: ${BACKEND_IMAGE:-ghcr.io/faraaz95/referral-backend:latest}
+    container_name: referral-backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://referral:${POSTGRES_PASSWORD}@db:5432/referral
+    depends_on:
+      db: { condition: service_healthy }
+    networks: [referral]
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request,sys; urllib.request.urlopen('http://127.0.0.1:8000/api/auth/csrf/'); sys.exit(0)\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    mem_limit: 384m
+    cpus: 0.5
+
+  web:
+    image: ${FRONTEND_IMAGE:-ghcr.io/faraaz95/referral-frontend:latest}
+    container_name: referral-web
+    restart: unless-stopped
+    depends_on:
+      backend: { condition: service_healthy }
+    networks: [referral]
+    mem_limit: 256m
+    cpus: 0.5
+
+networks:
+  referral:
+    name: referral
+
+volumes:
+  referral_pgdata:
+    name: referral_pgdata
