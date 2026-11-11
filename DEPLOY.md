@@ -23,7 +23,8 @@ Internet → Nginx Proxy Manager (TLS, shared edge) → referral-web (Next.js :3
 3. **deploy** – copies `deploy/` to `/home/deploy/referral` on the VPS and runs `deploy/deploy.sh`.
 
 Repo secrets: `SSH_HOST`, `SSH_USER` (`deploy`), `SSH_KEY` (private key; public half in `deploy`'s
-`~/.ssh/authorized_keys`), optional `GHCR_USER` / `GHCR_TOKEN`. Key on this Mac: `~/.ssh/id_referral_vps`.
+`~/.ssh/authorized_keys`), optional `GHCR_USER` / `GHCR_TOKEN`. `SSH_KEY` reuses the CraftFlow deploy key
+(`~/.ssh/id_craftflow_vps` on this Mac, alias `craftflow-vps`); the server is already logged in to ghcr.io.
 
 ## Server setup
 
