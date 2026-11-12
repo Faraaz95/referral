@@ -29,7 +29,7 @@ function LoginForm() {
   return (
     <>
       <h1>Welcome back</h1>
-      <p className="sub">Sign in to your CraftFlow partner dashboard.</p>
+      <p className="sub">Sign in to your partner dashboard.</p>
       {/* Explicit tab order: Forgot password comes after Sign in, though it sits beside the Password label */}
       <form className="auth-form" onSubmit={submit}>
         {error && <p className="form-error" role="alert">{error}</p>}

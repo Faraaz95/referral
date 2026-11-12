@@ -18,7 +18,7 @@ def new_code(length=8):
 
 class ProgramSettings(models.Model):
     """Single row: program-wide settings."""
-    name = models.CharField(max_length=120, default='CraftFlow Partner Program')
+    name = models.CharField(max_length=120, default='Referral Program')
     currency = models.CharField(max_length=3, default='USD')
     min_payout = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal('50.00'))
     auto_approve_days = models.PositiveIntegerField(default=0, help_text='Approve pending commissions automatically after N days (0 = by hand)')

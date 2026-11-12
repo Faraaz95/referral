@@ -1,6 +1,6 @@
-# CraftFlow Referrals
+# Referral
 
-Partner / referral program for CraftFlow — Django REST Framework + PostgreSQL backend, Next.js frontend,
+Partner / referral program — Django REST Framework + PostgreSQL backend, Next.js frontend,
 in the CraftFlow theme. Production: **https://referral.flexiflow.tech**
 
 ## What it does

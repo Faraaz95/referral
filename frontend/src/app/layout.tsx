@@ -6,8 +6,8 @@ const lato = Lato({ weight: ['400', '700', '900'], subsets: ['latin'], variable:
 const script = Dancing_Script({ weight: '700', subsets: ['latin'], variable: '--font-script' });
 
 export const metadata: Metadata = {
-  title: { default: 'CraftFlow Referrals', template: '%s · CraftFlow Referrals' },
-  description: 'CraftFlow partner & referral program.',
+  title: { default: 'Referral', template: '%s · Referral' },
+  description: 'Partner & referral program.',
 };
 
 const menuScript = `try{if(localStorage.getItem('referral-menu')==='collapsed')document.documentElement.classList.add('nav-collapsed')}catch(e){}`;

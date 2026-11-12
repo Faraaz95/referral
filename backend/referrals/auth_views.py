@@ -87,7 +87,7 @@ def password_reset(request):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
         link = f'{settings.FRONTEND_URL}/reset-password/{uid}/{token}'
-        send_mail('Reset your CraftFlow Referrals password',
+        send_mail('Reset your Referral password',
                   f'Hi {user.first_name or user.get_username()},\n\nSet a new password here (link expires in 3 days):\n{link}\n\n'
                   'If you didn’t ask for this, you can ignore this email.',
                   settings.DEFAULT_FROM_EMAIL, [user.email], fail_silently=True)

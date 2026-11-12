@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Pull the given images and (re)start the CraftFlow Referrals stack. Touches only "referral*"
+# Pull the given images and (re)start the Referral stack. Touches only "referral*"
 # containers, network and volumes — other apps are never affected.
 #   BACKEND_IMAGE=ghcr.io/faraaz95/referral-backend:<sha> FRONTEND_IMAGE=... ./deploy.sh
 set -euo pipefail

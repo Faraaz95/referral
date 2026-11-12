@@ -1,4 +1,4 @@
-# Deploying CraftFlow Referrals
+# Deploying Referral
 
 Production: **https://referral.flexiflow.tech**, on the shared VPS next to CraftFlow / FindFlow / Timellio, fully separate.
 

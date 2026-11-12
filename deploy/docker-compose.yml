@@ -1,4 +1,4 @@
-# CraftFlow Referrals production stack — fully separate from the other apps on the VPS (own project
+# Referral production stack — fully separate from the other apps on the VPS (own project
 # name, network, volumes and container names). Nginx Proxy Manager reaches the web container over
 # the "referral" network; nothing is published on the host.
 name: referral
